@@ -6,6 +6,9 @@
 // @author      kejn
 // @homepage    https://github.com/kejn/user-scripts/tree/master
 // @homepageURL https://github.com/kejn/user-scripts/tree/master
+// @downloadURL https://github.com/kejn/user-scripts/raw/master/Packtpub_Book_List_Filter.user.js
+// @updateURL   https://github.com/kejn/user-scripts/raw/master/Packtpub_Book_List_Filter.user.js
+// @supportURL  https://github.com/kejn/user-scripts/issues
 // @include     https://www.packtpub.com/account/my-ebooks
 // @version     1.0.0
 // @grant       none
