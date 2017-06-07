@@ -18,7 +18,7 @@ $(document).ready(function () {
   $('#myCustomSearchBox').on('input', function () {
     var newValue = $(this).val().toLowerCase();
     $('.product-line').each(function () {
-      if ($(this).attr('title').toLowerCase().indexOf(newValue) > -1) {
+      if ($(this).attr('title') && $(this).attr('title').toLowerCase().indexOf(newValue) > -1) {
         $(this).show();
       } else {
         $(this).hide();
