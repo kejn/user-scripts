@@ -37,16 +37,20 @@ $(document).ready(function () {
     var wrapper = $('.playerContainer iframe').contents();
     if (wrapper) {
       var player = wrapper.find('iframe').contents();
-      searchInIframe(player[0].documentElement.innerHTML, function (url) {
-        console.log('Pobierz film: ' + url);
-        $('#download-movie').empty();
-        $('#download-movie').append($('<a/>', {
-          'href': url,
-          'target': '_blank',
-          'text': '> Pobierz film / Oglądaj bez reklam <',
-          'style': 'font-weight: bold; font-size: 2em; color: white;'
-        }));
-      });
+      try {
+        searchInIframe(player[0].documentElement.innerHTML, function (url) {
+          console.log('Pobierz film: ' + url);
+          $('#download-movie').empty();
+          $('#download-movie').append($('<a/>', {
+            'href': url,
+            'target': '_blank',
+            'text': '> Pobierz film / Oglądaj bez reklam <',
+            'style': 'font-weight: bold; font-size: 2em; color: white;'
+          }));
+        });
+      } catch(err) {
+        $('#download-movie p:first-child').text(err.message);
+      }
     }
   }, 5000);
 });
