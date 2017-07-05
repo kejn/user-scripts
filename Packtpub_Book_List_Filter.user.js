@@ -10,11 +10,18 @@
 // @updateURL   https://github.com/kejn/user-scripts/raw/master/Packtpub_Book_List_Filter.user.js
 // @supportURL  https://github.com/kejn/user-scripts/issues
 // @include     https://www.packtpub.com/account/my-ebooks
-// @version     1.0.0
+// @version     1.1.0
 // @grant       none
 // ==/UserScript==
 $(document).ready(function () {
-  $('#account-right-content > h1').after('<input id="myCustomSearchBox" placeholder="Search..." type="text" style="width: 100%;" />');
+  $('#account-right-content > h1').after(`
+    <input id="myCustomSearchBox" placeholder="Search..." type="text" style="width: 100%;" /><br />
+    <p style="font-size: 0.9em;">Results: <span id="bookCounter"></span></p>
+  `);
+  var counterValue = function() {
+    return $('.product-line').filter(':visible').length;
+  };
+  $('#bookCounter').text(counterValue());  
   $('#myCustomSearchBox').on('input', function () {
     var newValue = $(this).val().toLowerCase();
     $('.product-line').each(function () {
@@ -25,5 +32,8 @@ $(document).ready(function () {
         $(this).hide();
       }
     });
+    setTimeout(function() {
+      $('#bookCounter').text(counterValue());
+    }, 100);
   });
 });
