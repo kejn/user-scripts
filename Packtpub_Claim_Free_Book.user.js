@@ -9,8 +9,8 @@
 // @downloadURL  https://github.com/kejn/user-scripts/raw/master/Packtpub_Claim_Free_Book.user.js
 // @updateURL    https://github.com/kejn/user-scripts/raw/master/Packtpub_Claim_Free_Book.user.js
 // @supportURL   https://github.com/kejn/user-scripts/issues
-// @include      https://www.packtpub.com/packt/offers/free-learning
-// @version      1.0.0
+// @include      https://www.packtpub.com/*packt/offers/free-learning*
+// @version      1.0.1
 // @grant        none
 // ==/UserScript==
 
