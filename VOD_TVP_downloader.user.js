@@ -10,7 +10,7 @@
 // @updateURL   https://github.com/kejn/user-scripts/raw/master/VOD_TVP_downloader.user.js
 // @supportURL  https://github.com/kejn/user-scripts/issues
 // @include     https://vod.tvp.pl/*
-// @version     1.0.0
+// @version     1.1.0
 // @grant       none
 // ==/UserScript==
 $(document).ready(function () {
@@ -24,6 +24,19 @@ $(document).ready(function () {
     url = url.toString().split('\'') [1];
     callback(url);
   }
+  
+  var pausePlayerExecutionCounter = 0;
+  var pausePlayer = function(player) {
+    ++pausePlayerExecutionCounter;
+    var button = player.find('.tvppause');
+    if(button.length && button.is(':visible')) {
+      button.click();
+    } else if(pausePlayerCounter < 60) { // w ciągu 30 sekund na pewno się w końcu uruchomi ta reklama :)
+      setTimeout(function() {
+        pausePlayer(player);
+      }, 500);
+    }
+  };
   
   $('.playerContainer').prepend($('<div/>', {
     'id': 'download-movie',
@@ -47,6 +60,7 @@ $(document).ready(function () {
             'text': '> Pobierz film / Oglądaj bez reklam <',
             'style': 'font-weight: bold; font-size: 2em; color: white;'
           }));
+          pausePlayer(player);
         });
       } catch(err) {
         $('#download-movie p:first-child').text(err.message);
