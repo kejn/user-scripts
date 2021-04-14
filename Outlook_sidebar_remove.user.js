@@ -10,12 +10,17 @@
 
 (function() {
     'use strict';
-    var tryme = setInterval(function(){
-        var elem = document.querySelector('i[data-icon-name="OutlookLogo"]');
+    var remover = (selector, interval) => {
+        var elem = document.querySelector(selector);
         if (elem) {
             elem.parentElement.parentElement.parentElement.remove();
-            clearInterval(tryme);
+            clearInterval(interval);
         }
-        console.log('see this?');
+    }
+    var sidebar = setInterval(() => {
+        remover('i[data-icon-name="OutlookLogo"]', sidebar);
+    }, 1000);
+    var navbar = setInterval(() => {
+        remover('img[src*="premium"]', navbar);
     }, 1000);
 })();
