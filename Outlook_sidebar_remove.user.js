@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Outlook sidebar remove
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @author       kejn
 // @match        https://outlook.live.com/mail*
@@ -22,5 +22,8 @@
     }, 1000);
     var navbar = setInterval(() => {
         remover('img[src*="premium"]', navbar);
+    }, 1000);
+    var reklama = setInterval(() => {
+        remover('[aria-label="reklama"]', reklama);
     }, 1000);
 })();
